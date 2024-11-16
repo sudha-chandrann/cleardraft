@@ -21,7 +21,7 @@ export interface TEAM{
     _id:String
 }
 
-function SideNavTopSection({user}:any) {
+function SideNavTopSection({user,setActiveTeamInfo}:any) {
 
 
 const menu=[
@@ -49,6 +49,10 @@ const getTeamList=async()=>{
     setActiveTeam(result[0]);
    
 }
+useEffect(()=>{
+    activeTeam&&setActiveTeamInfo(activeTeam)
+},[activeTeam])
+
 useEffect(()=>{
     user&&getTeamList();
 },[user])
