@@ -4,6 +4,7 @@ import { useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
 
 import { useConvex, useMutation, useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
+import Header from './_components/Header';
 
 function page() {
 
@@ -32,9 +33,11 @@ function page() {
 
 
   return (
-    <div>
-       
-      dashboard
+    <div className=' h-screen w-full relative'>
+       <Header/>
+       hello
+      
+      
     </div>
   )
 }

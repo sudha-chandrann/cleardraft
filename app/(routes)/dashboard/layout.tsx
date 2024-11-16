@@ -37,7 +37,7 @@ function layout(
       <div className='bg-black h-screen w-72 fixed'>
        <SideNav/>
       </div>
-      <div className='col-span-4 ml-72 '>
+      <div className='col-span-4  ml-72'>
         {children}
       </div>
       
