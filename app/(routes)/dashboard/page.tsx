@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from 'react'
-import {LogoutLink, useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
-import { Button } from '@/components/ui/button';
+import { useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
+
 import { useConvex, useMutation, useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 
@@ -33,7 +33,7 @@ function page() {
 
   return (
     <div>
-        <Button> <LogoutLink>logout</LogoutLink></Button>
+       
       dashboard
     </div>
   )

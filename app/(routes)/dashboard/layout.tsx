@@ -3,8 +3,8 @@ import { api } from '@/convex/_generated/api';
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
 import { useConvex } from 'convex/react';
 import { useRouter } from 'next/navigation';
-import React, {  useEffect } from 'react'
-
+import React, {  useEffect } from 'react';
+import SideNav from './_components/sideNav';
 function layout(
     {
         children,
@@ -33,8 +33,14 @@ function layout(
   }
 
   return (
-    <div>
-      {children}
+    <div className=' grid grid-cols-4 '>
+      <div className='bg-black h-screen w-72 fixed'>
+       <SideNav/>
+      </div>
+      <div className='col-span-4 ml-72 '>
+        {children}
+      </div>
+      
     </div>
   )
 }
