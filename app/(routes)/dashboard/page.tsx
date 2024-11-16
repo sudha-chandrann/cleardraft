@@ -5,6 +5,7 @@ import { useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
 import { useConvex, useMutation, useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import Header from './_components/Header';
+import FileList from './_components/FileList';
 
 function page() {
 
@@ -35,7 +36,7 @@ function page() {
   return (
     <div className=' h-screen w-full relative'>
        <Header/>
-       hello
+       <FileList/>
       
       
     </div>

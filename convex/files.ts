@@ -26,6 +26,7 @@ export const getFiles=query({
     handler:async(ctx,args)=>{
         const files=ctx.db.query('files')
         .filter(q=>q.eq(q.field('teamId'),args.teamId))
+        .order('desc')
         .collect();
         return files;
     }

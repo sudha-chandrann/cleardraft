@@ -1,12 +1,12 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SideNavBottomSection from './SideNavBottomSection'
 import SideNavTopSection, { TEAM } from './SideNavTopSection'
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 import { useConvex, useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { toast } from 'sonner'
-import { Result } from 'postcss'
+import { FileListContext } from '@/app/_context/FilesListContext'
 
 function SideNav() {
   const {user}:any=useKindeBrowserClient();
@@ -14,6 +14,7 @@ function SideNav() {
   const convex=useConvex();
   const [totalFiles,setTotalFiles]=useState(0);
   const [activeTeam,setActiveTeam]=useState<TEAM|any>();
+  const {fileList_,setFileList_}=useContext(FileListContext);
 
 
 
@@ -52,6 +53,7 @@ const getFiles = async () => {
     const files = await convex.query(api.files.getFiles, { teamId: activeTeam._id });
     console.log(files);
     setTotalFiles(files.length);
+    setFileList_(files);
   } catch (error) {
     console.error('Error fetching files:', error);
   }
