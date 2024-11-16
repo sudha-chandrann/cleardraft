@@ -121,7 +121,7 @@ const onMenuClick=(path:string)=>{
         </PopoverContent>
     </Popover>
    
-   <Button variant='outline' className=' bg-transparent border-transparent w-full flex justify-start mt-10 hover:bg-white/50'>
+   <Button variant='outline' className=' bg-white/30 border-transparent w-full flex justify-start mt-10 hover:bg-white/40'>
     <LayoutGrid/>
     All files</Button>
    </div>
