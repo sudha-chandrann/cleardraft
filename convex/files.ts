@@ -31,3 +31,17 @@ export const getFiles=query({
         return files;
     }
 })
+
+
+export const updateDocument=mutation(
+    {
+        args:{
+            fileId:v.id('files'),
+            document:v.string(),
+        },
+        handler:async(ctx ,args)=>{
+            const result=await ctx.db.patch(args.fileId,{document:args.document})
+            return result;
+        }
+    }
+)
