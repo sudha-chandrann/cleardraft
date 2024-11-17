@@ -45,3 +45,14 @@ export const updateDocument=mutation(
         }
     }
 )
+
+export const getFilebyid=query({
+    args:{
+        fileId:v.id('files'),
+    },
+    handler:async(ctx ,args)=>{
+        const file=await ctx.db.get(args.fileId)
+        return file
+
+    }
+})

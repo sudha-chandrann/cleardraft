@@ -34,11 +34,10 @@ const rawDocument = {
   version: '2.8.1',
 };
 
-function Editor({ onSaveTrigger,fileId }: any) {
+function Editor({ onSaveTrigger,fileId,fileData }: any) {
   const ref = useRef<EditorJS>();
-  const [document, setDocument] = useState(rawDocument);
    const updateDocument=useMutation(api.files.updateDocument);
-
+  
   useEffect(() => {
     initEditor();
 
@@ -49,28 +48,26 @@ function Editor({ onSaveTrigger,fileId }: any) {
         ref.current = undefined;
       }
     };
-  }, []);
+  }, [fileData]);
+ 
+
 
   useEffect(() => {
     if (onSaveTrigger) {
-      console.log('Trigger Value:', onSaveTrigger);
       onSaveDocument();
     }
   }, [onSaveTrigger]);
 
   const onSaveDocument = () => {
     if (ref.current) {
-      console.log('EditorJS instance:', ref.current);
       if (ref.current.save) {
         ref.current
           .save()
           .then((outputData) => {
-            console.log('Article data: ', outputData);
             updateDocument({
               fileId:fileId,
               document:JSON.stringify(outputData)
             }).then(resp=>{
-              console.log(resp);
               toast('document is updated successfully')
             }),(e:any)=>{
               toast('server error')
@@ -118,10 +115,12 @@ function Editor({ onSaveTrigger,fileId }: any) {
         paragraph: Paragraph,
       },
       holder: 'editorjs',
-      data: document,
+      data:fileData?.document?JSON.parse(fileData.document):rawDocument
     });
     ref.current = editor;
   };
+
+
 
   return (
     <div className="h-full">
