@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import WorkspaceHeader from '../_component/WorkspaceHeader'
 import Editor from '../_component/Editor';
-import Canvas from '../_component/Canvas';
 import { useConvex } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import { FILE } from '../../dashboard/_components/FileList';
 import { useParams } from 'next/navigation';
+import Canvas from '../_component/Canvas';
 
 function Workspace() {
   const params = useParams();
@@ -34,7 +34,7 @@ function Workspace() {
            <Editor onSaveTrigger={triggerSave} fileId={fileId} fileData={fileData}/>
         </div>
         <div className='h-screen border-1'>
-            <Canvas/>
+            <Canvas filedata={fileData} onSaveTrigger={triggerSave} fileId={fileId}/>
         </div>
 
       </div>
